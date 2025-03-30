@@ -46,9 +46,7 @@ This project is part of AF3005 – Programming for Finance, focusing on the Prog
 
 - **Python** 🐍  
 - **Streamlit** 🎨 (for UI & interaction)  
-- **Pandas** 📊 (for data handling)  
 - **Matplotlib & Plotly** 📈 (for charts & graphs)  
-- **CSS Styling** 🎭 (for enhanced UI customization)  
 
 ---
 
