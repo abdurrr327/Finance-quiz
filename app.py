@@ -2,42 +2,13 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# Set up Streamlit page layout and title
 st.set_page_config(page_title="💰 Personal Finance Quiz", layout="wide")
-
-st.markdown("""
-    <style>
-        #MainMenu {visibility: hidden;}
-        footer {visibility: hidden;}
-        header {visibility: hidden;}
-        .stProgress > div > div > div > div {
-            background-color: #f39c12 !important;
-        }
-        .floating-quote {
-            position: fixed;
-            top: 50%;
-            right: 20px;
-            width: 250px;
-            padding: 10px;
-            background-color: #f8f9fa;
-            color: #rtb4tjnt;
-            font-size: 16px;
-            font-weight: bold;
-            border-left: 5px solid #f39c12;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-        }
-    </style>
-""", unsafe_allow_html=True)
 
 # 🖼️ Add a finance knowledge image at the start
 st.image("money.jpg", use_container_width=round)
-
 st.title("💰 Personal Finance Quiz")
 st.write("📢 *Test your financial literacy with this engaging quiz!* 🧠")
-st.markdown("""
-    <div class="floating-quote">
-        FREE PALESTINE!
-    </div>
-""", unsafe_allow_html=True)
 
 quiz_data = [
     {"question": "What is the primary purpose of a budget?", "options": ["To track expenses", "To save for retirement", "To invest in stocks", "To pay taxes"], "answer": "To track expenses"},
@@ -67,17 +38,16 @@ mail = st.text_input("**EMAIL:**")
 score = 0
 answers = {}
 
-# Quiz Questions
 st.header("📝 Take the Quiz")
 for i, q in enumerate(quiz_data):
     st.subheader(f"Question {i + 1}: {q['question']}")
+    
     user_answer = st.radio("Select your answer:", q["options"], index=None, key=f"q_{i}")
     
     answers[q["question"]] = user_answer
     if user_answer == q["answer"]:
         score += 1
 
-# Progress Bar
 progress = (len(answers) / total_questions) * 100
 st.progress(progress / 100)
 
@@ -96,7 +66,7 @@ if st.button("📊 Submit Quiz"):
         st.write("---")
 
     st.subheader("📊 Your Score Overview")
-    fig, ax = plt.subplots(figsize=(4, 3))  # Reduced size
+    fig, ax = plt.subplots(figsize=(4, 3))  
     ax.bar(["Correct", "Incorrect"], [score, total_questions - score], color=["#2ecc71", "#e74c3c"])
     ax.set_ylabel("Number of Questions")
     ax.set_title("Quiz Performance")
